@@ -50,8 +50,12 @@ export default function Home() {
         <Suspense fallback={<div>Loading, please wait.</div>}>
           {prodType ? (
             <>
-              <ProductDesc accessType={prodType} />
-              <ProductImage accessType={prodType} />
+              <div className={styles.prodDesc}>
+                <ProductDesc accessType={prodType} />
+              </div>
+              <div className={styles.prodImage}>
+                <ProductImage accessType={prodType} />
+              </div>
             </>
           ) : (
             <div>Loading, please wait.</div>
