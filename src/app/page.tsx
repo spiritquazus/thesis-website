@@ -45,9 +45,9 @@ export default function Home() {
   }
 
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Suspense fallback={<div>Loading, please wait.</div>}>
+    <Suspense fallback={<div>Loading, please wait.</div>}>
+      <div className={styles.page}>
+        <main className={styles.main}>  
           {prodType ? (
             <>
               <div className={styles.prodDesc}>
@@ -60,12 +60,12 @@ export default function Home() {
           ) : (
             <div>Loading, please wait.</div>
           )}
-        </Suspense>
-      </main>
-      <footer className={styles.footer}>
-        <button onClick={()=>{clickBtn(true)}} className={styles.buttonEnv}>Interested</button>
-        <button onClick={()=>{clickBtn(false)}} className={styles.buttonEnv}>Not Interested</button>
-      </footer>
-    </div>
+        </main>
+        <footer className={styles.footer}>
+          <button onClick={() => { clickBtn(true) }} className={styles.buttonEnv}>Interested</button>
+          <button onClick={() => { clickBtn(false) }} className={styles.buttonEnv}>Not Interested</button>
+        </footer>
+      </div>
+    </Suspense>
   );
 }
