@@ -1,3 +1,4 @@
+"use client"
 import styles from "./product.module.css";
 
 export default function ProductImage({ accessType }: { accessType: string | null }){

@@ -44,7 +44,7 @@ export default function ProductDesc({ accessType }: { accessType: string | null 
         setCurrProd(accessType=="h"?productH:productL)
         console.log("detected access sublevel: ", currProd)
         console.log("sublevel access acceptance prop: ", accessType)
-    },[])
+    },[accessType])
 
     return (
       <>

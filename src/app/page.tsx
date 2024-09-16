@@ -45,27 +45,23 @@ export default function Home() {
   }
 
   return (
-    <Suspense fallback={<div>Loading, please wait.</div>}>
-      <div className={styles.page}>
-        <main className={styles.main}>  
+    <div className={styles.page}>
+      <main className={styles.main}>
+        <Suspense fallback={<div>Loading, please wait.</div>}>
           {prodType ? (
             <>
-              <div className={styles.prodDesc}>
-                <ProductDesc accessType={prodType} />
-              </div>
-              <div className={styles.prodImage}>
-                <ProductImage accessType={prodType} />
-              </div>
+              <ProductDesc accessType={prodType} />
+              <ProductImage accessType={prodType} />
             </>
           ) : (
             <div>Loading, please wait.</div>
           )}
-        </main>
-        <footer className={styles.footer}>
-          <button onClick={() => { clickBtn(true) }} className={styles.buttonEnv}>Interested</button>
-          <button onClick={() => { clickBtn(false) }} className={styles.buttonEnv}>Not Interested</button>
-        </footer>
-      </div>
-    </Suspense>
+        </Suspense>
+      </main>
+      <footer className={styles.footer}>
+        <button onClick={() => { clickBtn(true) }} className={styles.buttonEnv}>Interested</button>
+        <button onClick={() => { clickBtn(false) }} className={styles.buttonEnv}>Not Interested</button>
+      </footer>
+    </div>
   );
 }
