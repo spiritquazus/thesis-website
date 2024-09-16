@@ -1,0 +1,8 @@
+.imageMain{
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    place-self: center;
+    object-fit: cover;
+  }

@@ -1,6 +1,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --font-G1: calc(var(--font-M1)*4.741632);
+  --font-G2: calc(var(--font-M1)*2.8224);
+  --font-G3: calc(var(--font-M1)*1.68);
+  --font-M1: 1.2rem;
+  --font-M1a: 0.9rem;
+  --font-M2: calc(var(--font-M1)*0.595);
+  --font-M3: calc(var(--font-M1)*0.354);
+  --font-S1: calc(var(--font-M1)*0.211);
+  --font-S2: calc(var(--font-M1)*0.126);
+  --font-S3: calc(var(--font-M1)*0.075);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,7 +24,9 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
 }
 
 body {
