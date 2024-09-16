@@ -47,18 +47,20 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        {prodType ? (
-            <Suspense>
+        <Suspense fallback={<div>Loading, please wait.</div>}>
+          {prodType ? (
+            <>
               <div className={styles.prodDesc}>
                 <ProductDesc accessType={prodType} />
               </div>
               <div className={styles.prodImage}>
                 <ProductImage accessType={prodType} />
               </div>
-            </Suspense>
+            </>
           ) : (
             <div>Loading, please wait.</div>
           )}
+        </Suspense>
       </main>
       <footer className={styles.footer}>
         <button onClick={()=>{clickBtn(true)}} className={styles.buttonEnv}>Interested</button>
