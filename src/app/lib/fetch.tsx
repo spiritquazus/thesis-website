@@ -87,7 +87,7 @@ export async function Seed(){
             product TEXT NOT NULL,
             start_time BIGINT NOT NULL,
             end_time BIGINT NOT NULL,
-            total_time BIGINT NOT NULL,
+            total_time BIGINT NOT NULL
         )
     `
     await client.sql`
@@ -106,6 +106,6 @@ export async function Seed(){
             question10 INTEGER
         )
     `
-            
+
 }
 
