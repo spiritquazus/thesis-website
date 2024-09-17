@@ -53,6 +53,12 @@ form{
 
 .qDivTitle{
     margin-bottom: 2rem;
+    flex-direction: column;
+}
+
+.qDiv>div{
+    display: flex;
+
 }
 
 p{
