@@ -8,7 +8,7 @@ import { useState, useEffect, Suspense }  from "react"
 import { useSearchParams } from "next/navigation";
 import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
-import { createUser, updateUser } from './lib/fetch'
+
 
 export default function Home() {
   const [prodType, setProdType] = useState<string | null>(null)
@@ -45,7 +45,7 @@ export default function Home() {
         }
         setUserData(newUserData)
         localStorage.setItem('thesisBottle', JSON.stringify(newUserData))
-        createUser({id: newUserData.id, access: accessType, product: prodType, startTime: newUserData.startTime})
+        //createUser({id: newUserData.id, access: accessType, product: prodType, startTime: newUserData.startTime})
       }
     }
 
@@ -56,7 +56,7 @@ export default function Home() {
   function clickBtn(_interest:boolean){
     setTicker((prev)=>[prev[0], Date.now()]) //back-up setup
     console.log(`User stayed ${(ticker[1]-ticker[0])/1000} seconds on the page before moving on`)
-    updateUser({ id: userData.id, endTime: Date.now(), startTime: ticker[0]}) //update user time
+    //updateUser({ id: userData.id, endTime: Date.now(), startTime: ticker[0]}) //update user time
     if (_interest){
       router.push('/email-sign')
       //sign up email then survey

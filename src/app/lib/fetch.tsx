@@ -1,9 +1,18 @@
+
+
+require('dotenv').config(); // Add this at the top of the file
+
+const connectionString = process.env.POSTGRES_URL;
 import { db } from '@vercel/postgres';
 import {CreateUserParams,UpdateUserParams,createSurveyParams} from '../types'
+
 const client = await db.connect();
-
-
-
+console.log('POSTGRES_URL:', process.env.POSTGRES_URL);
+console.log({
+      POSTGRES_URL: process.env.POSTGRES_URL,
+      POSTGRES_URL_NON_POOLING: process.env.POSTGRES_URL_NON_POOLING
+    });
+/* 
 export async function createUser({
     id,
     access,
@@ -66,7 +75,7 @@ export async function completeSurvey({
         WHERE user_id = ${userId}
     `
 }
-
+ */
 export async function Seed(){
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
     await client.sql`
@@ -97,6 +106,7 @@ export async function Seed(){
             question10 INTEGER
         )
     `
-
+    
+    alert("table successfully seeded!")
 }
 
