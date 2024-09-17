@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 export async function createUser(_obj: object){
     try {
-        const response = await fetch('/api/createUser', {
+        const response = await fetch('/api/userCreate', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

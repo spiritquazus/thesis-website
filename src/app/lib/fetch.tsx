@@ -85,9 +85,9 @@ export async function Seed(){
             email TEXT UNIQUE,
             access TEXT NOT NULL,
             product TEXT NOT NULL,
-            start_time INTEGER NOT NULL
-            end_time INTEGER NOT NULL
-            total_time INTEGER NOT NULL
+            start_time BIGINT NOT NULL,
+            end_time BIGINT NOT NULL,
+            total_time BIGINT NOT NULL,
         )
     `
     await client.sql`
@@ -106,7 +106,6 @@ export async function Seed(){
             question10 INTEGER
         )
     `
-    
-    alert("table successfully seeded!")
+            
 }
 

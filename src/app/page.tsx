@@ -8,6 +8,7 @@ import { useState, useEffect, Suspense }  from "react"
 import { useSearchParams } from "next/navigation";
 import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
+import {userUpdate, createUser, userSurvey} from "./requests"
 
 
 export default function Home() {
