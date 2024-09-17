@@ -58,12 +58,13 @@
   backdrop-filter: blur(15px);
   border: 1px solid rgba(200,200,200,0.5);
   color: black;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 2rem;
   overflow: hidden;
   font-size: var(--font-M1a);
-  
 }
 
 .prodDesc>div>span{
@@ -78,7 +79,7 @@
 }
 
 .buttonEnv{
-  color: rgba(3, 255, 58, 0.863);
+  color: rgba(5, 129, 32, 0.863);
   background-color: rgba(150,150,150,0.1);
   backdrop-filter: blur(15px);
   border: 3px solid rgba(3, 255, 58, 0.863);

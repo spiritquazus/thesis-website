@@ -30,25 +30,25 @@ export async function userUpdate(_obj: object){
 
         const res = await response.json();
         console.log('User completed view!', res);
-
+        return { ok: response.ok }
     } catch(error){
         console.log('User update failed: ', error)
+        return { ok: false }
     }
 }
 
-export async function userSurvey(_obj: object){
+export async function userSurvey(_obj: object): Promise<{ ok: boolean }> {
     try {
         const response = await fetch('/api/userSurvey', {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(_obj),})
-
-        const res = await response.json();
-        console.log('User completed the survey.', res);
-
-    } catch(error){
-        console.log('User survey update fail! ', error)
+            headers: {'Content-Type': 'application/json',},
+            body: JSON.stringify(_obj),
+        });
+        const res = await response.json()
+        console.log('User completed the survey.', res)
+        return { ok: response.ok }
+    } catch (error) {
+        console.log('User survey update failed! ', error)
+        return { ok: false }
     }
 }

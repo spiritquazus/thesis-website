@@ -8,7 +8,7 @@ import { useState, useEffect, Suspense }  from "react"
 import { useSearchParams } from "next/navigation";
 import { useRouter } from 'next/navigation';
 import { v4 as uuidv4 } from 'uuid';
-import {userUpdate, createUser, userSurvey} from "./requests"
+import {userUpdate, createUser} from "./requests"
 
 
 export default function Home() {
@@ -39,6 +39,7 @@ export default function Home() {
       if (existingData){
         setUserData(JSON.parse(existingData))
         alert("Existing user. Updating session...")
+        //⚠️createUser or at least UpdateUser should be called, if they are say, restarting the session.
       } else {
         const newUserData = {
           id: uuidv4(),
@@ -46,7 +47,7 @@ export default function Home() {
         }
         setUserData(newUserData)
         localStorage.setItem('thesisBottle', JSON.stringify(newUserData))
-        //createUser({id: newUserData.id, access: accessType, product: prodType, startTime: newUserData.startTime})
+        createUser({id: newUserData.id, access: accessType, product: prodType, startTime: newUserData.startTime})
       }
     }
 
@@ -57,7 +58,7 @@ export default function Home() {
   function clickBtn(_interest:boolean){
     setTicker((prev)=>[prev[0], Date.now()]) //back-up setup
     console.log(`User stayed ${(ticker[1]-ticker[0])/1000} seconds on the page before moving on`)
-    //updateUser({ id: userData.id, endTime: Date.now(), startTime: ticker[0]}) //update user time
+    userUpdate({ id: userData.id, endTime: Date.now(), startTime: ticker[0]}) //update user time
     if (_interest){
       router.push('/email-sign')
       //sign up email then survey
@@ -73,11 +74,11 @@ export default function Home() {
         <Suspense fallback={<div>Loading, please wait.</div>}>
           {prodType ? (
             <>
-              <div className={styles.prodDesc}>
-                <ProductDesc accessType={prodType} />
-              </div>
               <div className={styles.prodImage}>
                 <ProductImage accessType={prodType} />
+              </div>
+              <div className={styles.prodDesc}>
+                <ProductDesc accessType={prodType} />
               </div>
             </>
           ) : (

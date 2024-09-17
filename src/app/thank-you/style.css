@@ -1,0 +1,14 @@
+div{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction: column;
+    color: black;
+}
+
+.dxmSpecial{
+    position: absolute;
+    bottom: 5rem;
+    height: 5rem;
+    margin: 1rem;
+}

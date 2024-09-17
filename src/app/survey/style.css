@@ -1,0 +1,77 @@
+form{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.surveyPage{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
+    color: black;
+}
+
+.surveyTop{
+    display: flex;
+    width: 100%;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(200, 200, 200, 0.3);
+    backdrop-filter: blur(15px);
+    min-height: 10vh;
+}
+
+.surveyForm{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.surveyForm:nth-of-type(1){
+    padding-top: 15vh;
+
+}
+
+.qDiv{ 
+    display: flex;
+    flex-direction: column;
+    border-color: rgba(200, 200, 200, 0.3);
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px black solid;
+    width: calc(100%);
+    min-height: 25%;
+    font-size: var(--font-M1);
+    margin: 1rem 0;
+    padding: 0.5rem;
+}
+
+.qDivTitle{
+    margin-bottom: 2rem;
+}
+
+p{
+    margin: 1rem;
+    
+}
+
+label{
+    margin: 0.3rem;
+    padding: 0.2rem;
+}
+
+.radioBtn{
+    margin: 0 0.7rem;
+}
+
+.finalSubmit{
+    min-width: 10vw;
+    min-height: 3.5rem;
+    background-color: black;
+    border: none;
+    font-size: var(--font-G3);
+    padding: 0.5rem;
+}

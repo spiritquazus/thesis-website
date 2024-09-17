@@ -21,3 +21,4 @@ export interface createSurveyParams {
   userId: string;
   questions: Array<number>;
 }
+
