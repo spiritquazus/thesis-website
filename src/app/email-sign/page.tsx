@@ -1,6 +1,7 @@
 
 "use client"
 import styles from "../page.module.css";
+import "./style.css"
 import {useState, useRef} from "react"
 import { useRouter } from 'next/navigation';
 import { userUpdate } from "../requests"
@@ -42,13 +43,17 @@ export default function EmailSign() {
 
     return(
         <div className={styles.page}>
-            <h3>Thank you for your interest!</h3>
-            <p>Please submit your email before proceeding to the last stage of this exercise.</p>
-            <form>
-                <p>{msg}</p>
-                <input type="email" placeholder="honggildong@naver.co.kr" required ref={emailRef}/>
-                <button type="submit" onSubmit={handleSubmit}>Submit Email</button>
-            </form>
+            <div>
+                <h3>관심 가져주셔서 감사합니다!</h3>
+                <br/>
+                <p>마지막 단계로 진행하기 전에 이메일 제출 부탁드립니다.</p>
+                <form>
+                    <p>{msg}</p>
+                    <br/>
+                    <input type="email" placeholder="honggildong@naver.co.kr" required ref={emailRef}/>
+                    <button type="submit" onClick={handleSubmit}>제출하기</button>
+                </form>
+            </div>
         </div>
     )
 }

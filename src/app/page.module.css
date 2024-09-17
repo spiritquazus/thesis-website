@@ -15,6 +15,9 @@
   font-family: var(--font-geist-sans);
   background: linear-gradient(0deg, rgba(36,36,36,0.2945553221288515) 0%, rgba(255,255,255,1) 24%, rgba(255,255,255,1) 98%);
   overflow: hidden;
+  background-image: url("/img/bg.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .main{
@@ -39,12 +42,13 @@
   min-width: 50vh;
   max-width: 60%;
   min-height: 50vh;
-  max-height: 50vh;
+  max-height: 50%;
 /*   grid-row: 15 / span 50;
   grid-column: 21 / span 10; */
   
   position: absolute;
   justify-self: center; 
+  object-fit: contain;
 }
 
 .prodDesc{
@@ -79,7 +83,7 @@
 }
 
 .buttonEnv{
-  color: rgba(5, 129, 32, 0.863);
+  color: rgb(37, 170, 66);
   background-color: rgba(150,150,150,0.1);
   backdrop-filter: blur(15px);
   border: 3px solid rgba(3, 255, 58, 0.863);

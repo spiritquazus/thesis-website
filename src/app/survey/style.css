@@ -9,6 +9,7 @@ form{
     flex-direction: column;
     padding-bottom: 2rem;
     color: black;
+    
 }
 
 .surveyTop{
@@ -27,6 +28,7 @@ form{
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-color: rgba(200, 200, 200, 0.6);
 
 }
 
@@ -74,4 +76,5 @@ label{
     border: none;
     font-size: var(--font-G3);
     padding: 0.5rem;
+    margin-bottom: 5vh;
 }
