@@ -17,7 +17,7 @@ export async function POST(req: Request) {
 
       if (endTime && startTime) {
           // Update total_time and end_time if both are present
-          const totalTime = (endTime - startTime) / 1000;
+          const totalTime = Math.round((endTime - startTime) / 1000);
           await client.query(
               'UPDATE survey_users SET total_time = $1, end_time = $2 WHERE id = $3',
               [totalTime, endTime, id]
