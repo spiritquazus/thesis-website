@@ -17,10 +17,10 @@ export async function POST(req: Request) {
         )
 
         client.release()
-        return NextResponse.json({ message: 'User created successfully' })
+        return NextResponse.json({ message: 'User for survey successfully' })
     } catch (error) {
         console.error('Error creating a new user:', error);
-        return NextResponse.json({ message: 'Database update failed', error }, { status: 500 })
+        return NextResponse.json({ message: 'Survey Database update failed', error }, { status: 500 })
     }
 }
   

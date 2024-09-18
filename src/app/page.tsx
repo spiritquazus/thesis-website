@@ -47,7 +47,11 @@ export default function Home() {
         }
         setUserData(newUserData)
         localStorage.setItem('thesisBottle', JSON.stringify(newUserData))
-        createUser({id: newUserData.id, access: accessType, product: prodType, startTime: newUserData.startTime})
+        const endTime = Date.now()//provisional timing until the user actually leaves the page.
+        const startTime = newUserData.startTime
+        const totalTime = (endTime - startTime) / 1000;
+        console.log("!!total time format: ", totalTime)
+        createUser({id: newUserData.id, access: accessType, product: prodType, startTime: startTime, endTime: endTime, totalTime: totalTime})
       }
     }
 
