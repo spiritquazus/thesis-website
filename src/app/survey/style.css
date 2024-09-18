@@ -56,7 +56,7 @@ form{
     flex-direction: column;
 }
 
-.qDiv>div{
+.qBtns{
     display: flex;
 
 }

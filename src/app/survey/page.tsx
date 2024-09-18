@@ -74,7 +74,7 @@ const CreateSurvey: React.FC<{things: { num: number; title: string }[]}> = ({ th
                         <h3>{thing.num}번 질문</h3>
                         <span>{thing.title}</span>
                     </div>
-                    <div>
+                    <div className="qBtns">
                         {[1, 2, 3, 4, 5, 6, 7].map((value) => (
                             <label key={`q${thing.num}_${value}`}>
                                 <input
