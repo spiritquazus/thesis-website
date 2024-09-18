@@ -16,24 +16,26 @@ export default function Home() {
   const [accessType, setAccessType] = useState<string | null>(null)
   const [ticker, setTicker] = useState([0,0])
   const searchParams = useSearchParams()
+  const [dataLoad, setDataLoad] = useState(false)
   const [userData, setUserData] = useState<{ id: string; startTime: number }>({id: "DEFAULTBUG", startTime: Date.now()});
   const router = useRouter();
   
   useEffect(() => {
     // Get values from search params and update state
     // ?p=h&a=qr
+    setTicker((prev)=>[Date.now(), prev[1]])
     const prodVal = searchParams.get('p');
     const accVal = searchParams.get('a');
     if (prodVal !== null) setProdType(prodVal);
     if (accVal !== null) setAccessType(accVal);
     
 
-    console.log("accesses: ", prodVal);
+    console.log("accesses: ", prodVal, accVal);
+    setDataLoad(true)
   }, [searchParams]); 
 
   useEffect(()=>{ //start counter the moment component is mounted.
-    setTicker((prev)=>[Date.now(), prev[1]])
-
+    
     async function fetchLocalData(){
       const existingData = localStorage.getItem('thesisBottle')
       if (existingData){
@@ -57,9 +59,11 @@ export default function Home() {
       }
     }
 
-    fetchLocalData()
-
-  },[accessType]) //this could cause vercel server issues again.
+    if (dataLoad){
+      fetchLocalData()
+    }
+    
+  },[dataLoad]) //this could cause vercel server issues again.
 
   function clickBtn(_interest:boolean){
     setTicker((prev)=>[prev[0], Date.now()]) //back-up setup
