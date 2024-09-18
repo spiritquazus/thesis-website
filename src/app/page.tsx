@@ -42,6 +42,11 @@ export default function Home() {
         setUserData(JSON.parse(existingData))
         alert("Existing user. Updating session...")
         //⚠️createUser or at least UpdateUser should be called, if they are say, restarting the session.
+        const endTime = Date.now()//provisional timing until the user actually leaves the page. 
+        const startTime = userData.startTime
+        const totalTime = Math.round((endTime - startTime) / 1000)
+        createUser({id: userData.id, name: "anonymous", access: accessType, product: prodType, startTime: startTime, endTime: endTime, totalTime: totalTime, update:true})
+        //new update
       } else {
         const newUserData = {
           id: uuidv4(),
