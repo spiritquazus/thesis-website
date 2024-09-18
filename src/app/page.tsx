@@ -51,7 +51,7 @@ export default function Home() {
         localStorage.setItem('thesisBottle', JSON.stringify(newUserData))
         const endTime = Date.now()//provisional timing until the user actually leaves the page.
         const startTime = newUserData.startTime
-        const totalTime = (endTime - startTime) / 1000;
+        const totalTime = Math.round((endTime - startTime) / 1000)
         console.log("!!total time format: ", totalTime)
         console.log("access Type:", accessType)
         console.log("product type: ", prodType)
