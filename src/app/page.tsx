@@ -51,7 +51,9 @@ export default function Home() {
         const startTime = newUserData.startTime
         const totalTime = (endTime - startTime) / 1000;
         console.log("!!total time format: ", totalTime)
-        createUser({id: newUserData.id, access: accessType, product: prodType, startTime: startTime, endTime: endTime, totalTime: totalTime})
+        console.log("access Type:", accessType)
+        console.log("product type: ", prodType)
+        createUser({id: newUserData.id, name: "anonymous", access: accessType, product: prodType, startTime: startTime, endTime: endTime, totalTime: totalTime})
       }
     }
 
