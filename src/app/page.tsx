@@ -59,7 +59,7 @@ export default function Home() {
 
     fetchLocalData()
 
-  },[searchParams]) //this could cause vercel server issues again.
+  },[accessType]) //this could cause vercel server issues again.
 
   function clickBtn(_interest:boolean){
     setTicker((prev)=>[prev[0], Date.now()]) //back-up setup
