@@ -7,7 +7,7 @@ export async function POST(req: Request) {
       const pool = createPool();
       const client = await pool.connect();
 
-      if (email) {
+      if (email!=null) {
           // Update email if present
           await client.query(
               'UPDATE survey_users SET email = $1 WHERE id = $2',

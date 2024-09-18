@@ -76,7 +76,7 @@ export default function Home() {
     setTicker((prev)=>[prev[0], Date.now()]) //back-up setup
     console.log(`User stayed ${(ticker[1]-ticker[0])/1000} seconds on the page before moving on`)
     console.log("userData.id: ", userData.id)
-    userUpdate({ id: userData.id, endTime: Date.now(), startTime: ticker[0]}) //update user time
+    userUpdate({ id: userData.id, endTime: Date.now(), startTime: ticker[0], email:null }) //update user time
     if (_interest){
       router.push('/email-sign')
       //sign up email then survey
