@@ -41,6 +41,7 @@ export default function Home() {
       if (existingData){
         setUserData(JSON.parse(existingData))
         alert("Existing user. Updating session...")
+        console.log("userData parsed? ", userData)
         //⚠️createUser or at least UpdateUser should be called, if they are say, restarting the session.
         const endTime = Date.now()//provisional timing until the user actually leaves the page. 
         const startTime = userData.startTime
