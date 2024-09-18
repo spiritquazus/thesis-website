@@ -11,7 +11,7 @@ export async function POST(req: Request) {
         //conditional on update or create
         if (update){
             await client.query(
-                `UPDATE survey_users SET name=$2, access=$3, product=$4, start_time=$5, end_time=$6, total_time=$7 WHERE id=$1`,
+                `UPDATE survey_users SET name = $2, access = $3, product = $4, start_time = $5, end_time = $6, total_time = $7 WHERE id = $1`,
                 [id, name, access, product, startTime, endTime, totalTime]
             );
         } else {
