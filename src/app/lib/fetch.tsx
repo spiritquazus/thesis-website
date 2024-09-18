@@ -84,8 +84,6 @@ export async function HardReset(){
 }
 
 export async function Seed(){
-
-
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
     await client.sql`
         CREATE TABLE IF NOT EXISTS survey_users (
@@ -102,6 +100,7 @@ export async function Seed(){
     await client.sql`
         CREATE TABLE IF NOT EXISTS survey (
             id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+            user_id UUID UNIQUE NOT NULL REFERENCES survey_users(id),
             question1 INTEGER,
             question2 INTEGER,
             question3 INTEGER,
