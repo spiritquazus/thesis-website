@@ -78,14 +78,14 @@ const CreateSurvey: React.FC<{things: { num: number; title: string }[]}> = ({ th
                         <div className="qBtns">
                             {[1, 2, 3, 4, 5, 6, 7].map((value) => (
                                 <label key={`q${thing.num}_${value}`}>
+                                    {value}
                                     <input
                                         type="radio"
                                         name={`q${thing.num}`}
                                         value={value}
                                         checked={selectVal[thing.num] === value}
                                         onChange={() => handleSelect(thing.num, value)}
-                                    />
-                                    {value}
+                                    />       
                                 </label>
                             ))}
                         </div>
