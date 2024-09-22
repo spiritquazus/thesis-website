@@ -57,7 +57,7 @@ export default function Home() {
         console.log("access Type:", accessType)
         console.log("product type: ", prodType)
         const response = await createUser({id: newUserData.id, name: "anonymous", access: accessType, product: prodType, startTime: startTime, endTime: endTime, totalTime: totalTime})
-        if (!response.ok) {
+        if (response.error) {
           console.error(`Failed to enter user: ${response.error || 'Unknown error'}`)
           setMsg(`Failed to enter user: ${response.error || 'Unknown error'}`)
         }
