@@ -43,7 +43,7 @@ export async function userUpdate(_obj: object){
     }
 }
 
-export async function userSurvey(_obj: object): Promise<{ ok: boolean }> {
+export async function userSurvey(_obj: object): Promise<{ ok: boolean, msg: any | null }> {
     try {
         const response = await fetch('/api/userSurvey', {
             method: 'POST',
@@ -52,9 +52,9 @@ export async function userSurvey(_obj: object): Promise<{ ok: boolean }> {
         });
         const res = await response.json()
         console.log('User completed the survey.', res)
-        return { ok: response.ok }
+        return { ok: response.ok, msg: null }
     } catch (error) {
         console.log('User survey update failed! ', error)
-        return { ok: false }
+        return { ok: false, msg: error }
     }
 }
