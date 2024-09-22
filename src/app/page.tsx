@@ -49,8 +49,8 @@ export default function Home() {
         const endTime = Date.now()//provisional timing until the user actually leaves the page. 
         const startTime = userData.startTime
         const totalTime = Math.round((endTime - startTime) / 1000)
-        createUser({id: oldUser.id, name: "anonymous", access: accessType, product: prodType, startTime: startTime, endTime: endTime, totalTime: totalTime, update:true})
-        //new update
+        const res =await createUser({id: oldUser.id, name: "anonymous", access: accessType, product: prodType, startTime: startTime, endTime: endTime, totalTime: totalTime, update:true})
+        let str = JSON.parse(res)
       } else {
         const newUserData = {
           id: uuidv4(),

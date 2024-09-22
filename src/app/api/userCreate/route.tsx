@@ -23,14 +23,18 @@ export async function POST(req: Request) {
                     WHERE id = $1`,
                 [id, name, access, product, startTime, endTime, totalTime]
                 )
-                return "Existing user data has been updated."
+                return NextResponse.json({
+                    message: "Existing user data has been updated."
+                });
             } else {
                 await client.query(
                     `INSERT INTO survey_users (id, name, access, product, start_time, end_time, total_time)
                      VALUES ($1, $2, $3, $4, $5, $6, $7)`,
                     [id, name, access, product, startTime, endTime, totalTime]
                 );
-                return "Existing user was not found. creating new instance."
+                return NextResponse.json({
+                    message: "Existing user not found, creating new instance."
+                });
             }
             //if condition. do a then?      
         } else {
