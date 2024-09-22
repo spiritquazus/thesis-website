@@ -39,7 +39,7 @@ export async function userUpdate(_obj: object){
         return { ok: response.ok }
     } catch(error){
         console.log('User update failed: ', error)
-        return { ok: false }
+        return { ok: false, msg: error }
     }
 }
 

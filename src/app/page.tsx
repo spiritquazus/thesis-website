@@ -18,6 +18,7 @@ export default function Home() {
   const searchParams = useSearchParams()
   const [dataLoad, setDataLoad] = useState(false)
   const [userData, setUserData] = useState<{ id: string; startTime: number }>({id: "DEFAULTBUG", startTime: Date.now()});
+  const [msg, setMsg] = useState("")
   const router = useRouter();
   
   useEffect(() => {
@@ -55,7 +56,11 @@ export default function Home() {
         console.log("!!total time format: ", totalTime)
         console.log("access Type:", accessType)
         console.log("product type: ", prodType)
-        createUser({id: newUserData.id, name: "anonymous", access: accessType, product: prodType, startTime: startTime, endTime: endTime, totalTime: totalTime})
+        const response = await createUser({id: newUserData.id, name: "anonymous", access: accessType, product: prodType, startTime: startTime, endTime: endTime, totalTime: totalTime})
+        if (!response.ok) {
+          console.error(`Failed to enter user: ${response.msg || 'Unknown error'}`)
+          setMsg(`Failed to enter user: ${response.msg || 'Unknown error'}`)
+        }
       }
     }
 
@@ -97,6 +102,7 @@ export default function Home() {
           )}
         </Suspense>
       </main>
+      <div>{msg}</div>
       <footer className={styles.footer}>
         <button onClick={() => { clickBtn(true) }} className={styles.buttonEnv}>관심 있다.</button>
         <button onClick={() => { clickBtn(false) }} className={styles.buttonEnv}>관심 없음.</button>
