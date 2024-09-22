@@ -21,11 +21,11 @@ export default function Survey() {
 
 const CreateSurvey: React.FC<{things: { num: number; title: string }[]}> = ({ things }) =>{
 
-    const [selectVal, setSelectVal] = useState<{ [key: number]: number | null }>({})
+    const [selectVal, setSelectVal] = useState<{ [key: number]: number | string | null }>({})
     const [msg, setMsg] = useState<string | null>(null)
     const router = useRouter();
 
-    const handleSelect = (questionNum: number, value: number) => {
+    const handleSelect = (questionNum: number, value: number | string) => {
         setSelectVal((prev) => ({
             ...prev,
             [questionNum]: value,
@@ -68,28 +68,54 @@ const CreateSurvey: React.FC<{things: { num: number; title: string }[]}> = ({ th
 
     return (
         <form onSubmit={handleSubmit} className="surveyForm">
-            {things.map((thing) => (
-                <div key={thing.num}  className="qDiv">
-                    <div className="qDivTitle">
-                        <h3>{thing.num}번 질문</h3>
-                        <span>{thing.title}</span>
+            {things.map((thing) => {
+                if (thing.num != 11) {return (
+                    <div key={thing.num}  className="qDiv">
+                        <div className="qDivTitle">
+                            <h3>{thing.num}번 질문</h3>
+                            <span>{thing.title}</span>
+                        </div>
+                        <div className="qBtns">
+                            {[1, 2, 3, 4, 5, 6, 7].map((value) => (
+                                <label key={`q${thing.num}_${value}`}>
+                                    <input
+                                        type="radio"
+                                        name={`q${thing.num}`}
+                                        value={value}
+                                        checked={selectVal[thing.num] === value}
+                                        onChange={() => handleSelect(thing.num, value)}
+                                    />
+                                    {value}
+                                </label>
+                            ))}
+                        </div>
                     </div>
-                    <div className="qBtns">
-                        {[1, 2, 3, 4, 5, 6, 7].map((value) => (
-                            <label key={`q${thing.num}_${value}`}>
-                                <input
-                                    type="radio"
-                                    name={`q${thing.num}`}
-                                    value={value}
-                                    checked={selectVal[thing.num] === value}
-                                    onChange={() => handleSelect(thing.num, value)}
-                                />
-                                {value}
-                            </label>
-                        ))}
-                    </div>
-                </div>
-            ))}
+                )} else {
+                    return (
+                        <div key={thing.num}  className="qDiv">
+                            <div className="qDivTitle">
+                                <h3>{thing.num}번 질문</h3>
+                                <span>{thing.title}</span>
+                            </div>
+                            <div className="qBtns">
+                                {["남", "여", "기타"].map((gender) => (
+                                    <label key={`q${thing.num}_${gender}`}>
+                                        <input
+                                            type="radio"
+                                            name={`q${thing.num}`}
+                                            value={gender}
+                                            checked={selectVal[thing.num] === gender}
+                                            onChange={() => handleSelect(thing.num, gender)}
+                                        />
+                                        {gender}
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
+                    )
+                }
+            })}
+                
             <p style={{color:"red"}}>{msg}</p>
             <button type="submit" className="finalSubmit">제출 하기</button>
         </form>
@@ -137,5 +163,9 @@ let questions = [
     {
         num: 10,
         title: "웹사이트에서 본 물병과 비슷한 물병에 대해 얼마나 친숙하신가요? (1 = 전혀 친숙하지 않음, 7 = 매우 친숙함)"
-    }
+    },
+    {
+        num: 11,
+        title: "성별이 어떻게 되세요?"
+    },
 ];

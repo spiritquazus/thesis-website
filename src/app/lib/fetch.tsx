@@ -110,7 +110,8 @@ export async function Seed(){
             question7 INTEGER,
             question8 INTEGER,
             question9 INTEGER,
-            question10 INTEGER
+            question10 INTEGER,
+            question11 INTEGER
         )
     `
 

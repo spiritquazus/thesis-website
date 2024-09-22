@@ -10,10 +10,29 @@ export async function POST(req: Request) {
         //🚧stuff
         //conditional on update or create
         if (update){
-            await client.query(
-                `UPDATE survey_users SET name = $2, access = $3, product = $4, start_time = $5, end_time = $6, total_time = $7 WHERE id = $1`,
+            //check if user exists
+            const res = await client.query(
+                `SELECT FROM survey_users WHERE id=$1`,
+                [id]
+            )
+
+            if (res.rows[0] !== undefined){
+                await client.query(
+                    `UPDATE survey_users 
+                    SET name = $2, access = $3, product = $4, start_time = $5, end_time = $6, total_time = $7 
+                    WHERE id = $1`,
                 [id, name, access, product, startTime, endTime, totalTime]
-            );
+                )
+                return "Existing user data has been updated."
+            } else {
+                await client.query(
+                    `INSERT INTO survey_users (id, name, access, product, start_time, end_time, total_time)
+                     VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+                    [id, name, access, product, startTime, endTime, totalTime]
+                );
+                return "Existing user was not found. creating new instance."
+            }
+            //if condition. do a then?      
         } else {
             await client.query(
                 `INSERT INTO survey_users (id, name, access, product, start_time, end_time, total_time)

@@ -39,11 +39,13 @@ export default function Home() {
     async function fetchLocalData(){
       const existingData = localStorage.getItem('thesisBottle')
       if (existingData){
+        //⚠️⚠️⚠️Not working so well. will need to fix. for Lisa and me if the userId doesnt exist, dont update. create a new one. 
+        //Right now it doesnt create...
         setUserData(JSON.parse(existingData))
         alert("Existing user. Updating session...")
         console.log("json parsed? ", JSON.parse(existingData))
         const oldUser = JSON.parse(existingData)
-        //⚠️createUser or at least UpdateUser should be called, if they are say, restarting the session.
+        
         const endTime = Date.now()//provisional timing until the user actually leaves the page. 
         const startTime = userData.startTime
         const totalTime = Math.round((endTime - startTime) / 1000)
