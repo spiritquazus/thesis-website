@@ -49,13 +49,19 @@ export default function Home() {
           startTime: Date.now() 
         }
         setUserData(newUserData)
-        localStorage.setItem('thesisBottle', JSON.stringify(newUserData))
+        setMsg("Welcome!")
+        try {
+          localStorage.setItem('thesisBottle', JSON.stringify(newUserData))
+        } catch (error) {
+          console.log("error: ", error)
+          setMsg(String(error))
+        }    
         const endTime = Date.now()//provisional timing until the user actually leaves the page.
         const startTime = newUserData.startTime
         const totalTime = Math.round((endTime - startTime) / 1000)
-        console.log("!!total time format: ", totalTime)
+/*         console.log("!!total time format: ", totalTime)
         console.log("access Type:", accessType)
-        console.log("product type: ", prodType)
+        console.log("product type: ", prodType) */
         const response = await createUser({id: newUserData.id, name: "anonymous", access: accessType, product: prodType, startTime: startTime, endTime: endTime, totalTime: totalTime})
         if (response.error) {
           console.error(`Failed to enter user: ${response.error || 'Unknown error'}`)
