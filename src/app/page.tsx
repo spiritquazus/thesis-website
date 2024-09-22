@@ -58,8 +58,8 @@ export default function Home() {
         console.log("product type: ", prodType)
         const response = await createUser({id: newUserData.id, name: "anonymous", access: accessType, product: prodType, startTime: startTime, endTime: endTime, totalTime: totalTime})
         if (!response.ok) {
-          console.error(`Failed to enter user: ${response.msg || 'Unknown error'}`)
-          setMsg(`Failed to enter user: ${response.msg || 'Unknown error'}`)
+          console.error(`Failed to enter user: ${response.error || 'Unknown error'}`)
+          setMsg(`Failed to enter user: ${response.error || 'Unknown error'}`)
         }
       }
     }
@@ -88,11 +88,13 @@ export default function Home() {
     <div className={styles.page}>
       <main className={styles.main}>
         <Suspense fallback={<div>Loading, please wait.</div>}>
+          
           {prodType ? (
             <>
               <div className={styles.prodImage}>
                 <ProductImage accessType={prodType} />
               </div>
+              <div>{msg}</div>
               <div className={styles.prodDesc}>
                 <ProductDesc accessType={prodType} />
               </div>
@@ -102,7 +104,6 @@ export default function Home() {
           )}
         </Suspense>
       </main>
-      <div>{msg}</div>
       <footer className={styles.footer}>
         <button onClick={() => { clickBtn(true) }} className={styles.buttonEnv}>관심 있다.</button>
         <button onClick={() => { clickBtn(false) }} className={styles.buttonEnv}>관심 없음.</button>
