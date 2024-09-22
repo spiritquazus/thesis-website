@@ -53,10 +53,12 @@ const CreateSurvey: React.FC<{things: { num: number; title: string }[]}> = ({ th
                         console.log('Survey submitted successfully.')
                         router.push('/thank-you')
                     } else {
-                        console.log('Failed to submit survey.')
+                        console.error('Failed to submit survey. Unknown Error')
+                        setMsg('Failed to submit survey. Unknown Error')
                     }
                 } catch (error) {
                     console.error('Error submitting survey! ', error)
+                    setMsg(`Failure to submit survey: ${error}`)
                 }
             } else {
                 console.log("Failure to find user ID. Check localStorage information.")
