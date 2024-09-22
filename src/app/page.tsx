@@ -94,7 +94,7 @@ export default function Home() {
               <div className={styles.prodImage}>
                 <ProductImage accessType={prodType} />
               </div>
-              <div>{msg}</div>
+              <div className={styles.title}>{msg} TEST</div>
               <div className={styles.prodDesc}>
                 <ProductDesc accessType={prodType} />
               </div>

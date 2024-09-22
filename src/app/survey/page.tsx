@@ -52,7 +52,7 @@ const CreateSurvey: React.FC<{things: { num: number; title: string }[]}> = ({ th
                     if (response.ok) {
                         console.log('Survey submitted successfully.')
                         router.push('/thank-you')
-                    } else {
+                    } else if (response.msg){
                         console.error(`Failed to submit survey: ${response.msg || 'Unknown error'}`)
                         setMsg(`Failed to submit survey: ${response.msg || 'Unknown error'}`)
                     }

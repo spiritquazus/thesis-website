@@ -52,9 +52,9 @@ export async function userSurvey(_obj: object): Promise<{ ok: boolean, msg: any 
         });
         const res = await response.json()
         console.log('User completed the survey.', res)
-        return { ok: response.ok, msg: null }
+        return { ok: response.ok, msg: "Good" }
     } catch (error) {
         console.log('User survey update failed! ', error)
-        return { ok: false, msg: error }
+        return { ok: false, msg: `Fatal Survey Error: ${error}` }
     }
 }
