@@ -1,10 +1,47 @@
+.bottleImgsCont{
+  max-height: 50%;
+}
+
+.prodImage{
+  min-width: 50vh;
+  max-width: 60%;
+  min-height: 50vh;
+  max-height: 50%;
+/*   grid-row: 15 / span 50;
+  grid-column: 21 / span 10; */
+  
+  position: absolute;
+  justify-self: center; 
+  object-fit: contain;
+  overflow: hidden;
+}
+
 .imageMain{
     max-width: 90%;
     height: 90%;
     aspect-ratio: 1 / 1;
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 65%;
     transform: translate(-50%, -50%);
     object-fit: contain;
+    overflow: hidden;
   }
+
+.imgGallery{
+  display: flex;
+  width: 30%;
+  /* height: 50%; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+ /*  border: rgb(204, 204, 204) 1px solid; */
+  position: absolute;
+}
+
+.imgGallery img{
+  object-fit: contain;
+  max-width: 25%;
+  margin: 0.5rem;
+}

@@ -10,6 +10,8 @@ div{
 
 .dxmSpecial{
     position: absolute;
+    min-width: 40vw;
+    min-height: 30vh;
     bottom: 5rem;
     height: 5rem;
     margin: 1rem;

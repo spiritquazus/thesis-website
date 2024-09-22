@@ -1,4 +1,4 @@
-div{
+.emailCont{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,6 +8,7 @@ div{
     padding: 1rem;
     background-color: rgba(200, 200, 200, 0.4);
     backdrop-filter: blur(15px);
+    place-self: center;
 }
 
 form{

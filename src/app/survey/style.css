@@ -39,7 +39,7 @@ form{
 
 .qDiv{ 
     display: flex;
-    flex-direction: column;
+    flex-direction: column !important;
     border-color: rgba(200, 200, 200, 0.3);
     justify-content: center;
     align-items: center;
@@ -58,7 +58,7 @@ form{
 
 .qBtns{
     display: flex;
-
+    flex-direction: row !important;
 }
 
 p{

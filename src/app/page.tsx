@@ -107,8 +107,8 @@ export default function Home() {
         </Suspense>
       </main>
       <footer className={styles.footer}>
-        <button onClick={() => { clickBtn(true) }} className={styles.buttonEnv}>Interested</button>
-        <button onClick={() => { clickBtn(false) }} className={styles.buttonEnv}>Not Interested</button>
+        <button onClick={() => { clickBtn(true) }} className={styles.buttonEnv}>관심 있다.</button>
+        <button onClick={() => { clickBtn(false) }} className={styles.buttonEnv}>관심 없음.</button>
       </footer>
     </div>
   );

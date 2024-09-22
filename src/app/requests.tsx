@@ -11,10 +11,14 @@ export async function createUser(_obj: object){
             },
             body: JSON.stringify(_obj),})
 
-        const res = await response.json();
-        
-        console.log('New user created!', res);
-        return res
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'User creation failed');
+            }
+
+            const res = await response.json();
+            console.log('New user created!', res);
+            return res;
     } catch(error){
         console.log('New user creation failed: ', error)
         return error
