@@ -47,7 +47,7 @@ export default function EmailSign() {
                 <h3>관심 가져주셔서 감사합니다!</h3>
                 <br/>
                 <p>마지막 단계로 진행하기 전에 이메일 제출 부탁드립니다.</p>
-                <form>
+                <form className="emailForm">
                     <p>{msg}</p>
                     <br/>
                     <input type="email" placeholder="honggildong@naver.co.kr" required ref={emailRef}/>
