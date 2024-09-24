@@ -4,7 +4,7 @@ import React from 'react';
 const ExportCSVButton = () => {
   const handleDownload = async () => {
     try {
-      const response = await fetch('/api/exportData');
+      const response = await fetch('../api/getTable');
       
       if (response.ok) {
         const blob = await response.blob();
