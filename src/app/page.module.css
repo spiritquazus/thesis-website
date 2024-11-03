@@ -61,11 +61,12 @@
 }
 
 .prodDesc{
-  width: 100%;
+  width: calc(100% - 4 rem);
   height: 100%;
   grid-row: 50 / span 38;
-  grid-column: 1 / -1;
-  padding: 1rem;
+  grid-column: 2 / -2;
+  padding: 1rem 2rem;
+  margin: 0 2rem;
   border-radius: 1rem;
   background-color: rgba(150,150,150,0.3);
   backdrop-filter: blur(15px);

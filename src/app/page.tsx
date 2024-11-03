@@ -64,8 +64,9 @@ export default function Home() {
         console.log("product type: ", prodType) */
         const response = await createUser({id: newUserData.id, name: "anonymous", access: accessType, product: prodType, startTime: startTime, endTime: endTime, totalTime: totalTime})
         if (response.error) {
-          console.error(`Failed to enter user: ${response.error || 'Unknown error'}`)
-          setMsg(`Failed to enter user: ${response.error || 'Unknown error'}`)
+          console.error("Failed to enter user:", response.error || 'Unknown error')
+          setMsg("Failed to enter user: " + response.error || 'Unknown error')
+          if (response.type) alert("Please check if your URL is valid if you had to type it in. If you used QR, please inform the administrator.")
         }
       }
     }
@@ -78,7 +79,7 @@ export default function Home() {
 
   function clickBtn(_interest:boolean){
     setTicker((prev)=>[prev[0], Date.now()]) //back-up setup
-    console.log(`User stayed ${(ticker[1]-ticker[0])/1000} seconds on the page before moving on`)
+    console.log(`User stayed ${(Date.now() - ticker[0])/1000} seconds on the page before moving on`)
     console.log("userData.id: ", userData.id)
     userUpdate({ id: userData.id, endTime: Date.now(), startTime: ticker[0], email:null }) //update user time
     if (_interest){
@@ -100,7 +101,7 @@ export default function Home() {
               <div className={styles.prodImage}>
                 <ProductImage accessType={prodType} />
               </div>
-              <div className={styles.title}>{msg} TEST</div>
+              <div className={styles.title}></div>
               <div className={styles.prodDesc}>
                 <ProductDesc accessType={prodType} />
               </div>
@@ -111,8 +112,8 @@ export default function Home() {
         </Suspense>
       </main>
       <footer className={styles.footer}>
-        <button onClick={() => { clickBtn(true) }} className={styles.buttonEnv}>관심 있다.</button>
-        <button onClick={() => { clickBtn(false) }} className={styles.buttonEnv}>관심 없음.</button>
+        <button onClick={() => { clickBtn(true) }} className={styles.buttonEnv}>Interested.</button>
+        <button onClick={() => { clickBtn(false) }} className={styles.buttonEnv}>Not Interested.</button>
       </footer>
     </div>
   );

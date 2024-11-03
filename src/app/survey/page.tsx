@@ -10,8 +10,8 @@ export default function Survey() {
     return(
         <div className={`${styles.page} surveyPage`}>
             <div className="surveyTop">
-                <h1>설문 조사</h1>
-                <p>본 웹사이트와 제품에 대한 질문 몇 가지에 응답 부탁드립니다.</p>
+                <h1>Survey</h1>
+                <p>Questions regarding the product and this website</p>
             </div>
             < CreateSurvey things={questions}/>
         </div>
@@ -64,7 +64,7 @@ const CreateSurvey: React.FC<{things: { num: number; title: string }[]}> = ({ th
                 console.log("Failure to find user ID. Check localStorage information.")
             }
         } else {
-            setMsg("모든 질문에 응답 부탁드립니다.");
+            setMsg("Please respond to every questions before moving on.");
         }
     }
 
@@ -74,7 +74,7 @@ const CreateSurvey: React.FC<{things: { num: number; title: string }[]}> = ({ th
                 if (thing.num != 11) {return (
                     <div key={thing.num}  className="qDiv">
                         <div className="qDivTitle">
-                            <h3>{thing.num}번 질문</h3>
+                            <h3>Question {thing.num}</h3>
                             <span>{thing.title}</span>
                         </div>
                         <div className="qBtns">
@@ -96,11 +96,11 @@ const CreateSurvey: React.FC<{things: { num: number; title: string }[]}> = ({ th
                     return (
                         <div key={thing.num}  className="qDiv">
                             <div className="qDivTitle">
-                                <h3>{thing.num}번 질문</h3>
+                                <h3>Question {thing.num}</h3>
                                 <span>{thing.title}</span>
                             </div>
                             <div className="qBtns">
-                                {["남", "여", "기타"].map((gender) => (
+                                {["Male", "Female", "Other"].map((gender) => (
                                     <label key={`q${thing.num}_${gender}`}>
                                         <input
                                             type="radio"
@@ -119,7 +119,7 @@ const CreateSurvey: React.FC<{things: { num: number; title: string }[]}> = ({ th
             })}
                 
             <p style={{color:"red"}}>{msg}</p>
-            <button type="submit" className="finalSubmit">제출 하기</button>
+            <button type="submit" className="finalSubmit">Submit Survey</button>
         </form>
     )
 }
@@ -128,46 +128,46 @@ const CreateSurvey: React.FC<{things: { num: number; title: string }[]}> = ({ th
 let questions = [
     {
         num: 1,
-        title: "웹사이트에 접근하고 탐색하는 데 얼마나 많은 노력이 필요하셨나요?(1 = 아주 적은 노력, 7 = 아주 많은 노력)"
+        title: "How much effort did it take for you to access and navigate the website? (1 = Very Little Effort, 7 = A Great Deal of Effort)"
     },
     {
         num: 2,
-        title: "원하는 정보를 찾기 위해 어느 정도까지 시간과 노력을 투자해야 한다고 느꼈나요? (1 = 아주 적음, 7 = 아주 많음)"
+        title: "To what extent did you feel like you had to invest time and effort to find the information you were looking for? (1 = Very Little, 7 = A Lot)"
     },
     {
         num: 3,
-        title: "웹사이트에 접근하는 것이 얼마나 어려웠나요? (1 = 전혀 어렵지 않음, 7 = 매우 어려움)"
+        title: "How challenging was it to engage with the product on the website?(1 = Not Challenging at All, 7 = Very Challenging)"
     },
     {
         num: 4,
-        title: "이 제품이 얼마나 기술적으로 집약되어 있다고 생각하시나요? (1 = 매우 낮은 기술, 7 = 매우 높은 기술)"
+        title: "How technologically advanced do you consider this product to be? (1 = Not Tech-Savvy, 7 = Very High-Tech)"
     },
     {
         num: 5,
-        title: "이 제품에 첨단 기술이 포함되어 있다고 생각하시나요? (1 = 전혀 아니다, 7 = 매우 그렇다)"
+        title: "Do you believe this product incorporates advanced technology? (1 = Strongly Disagree, 7 = Strongly Agree)"
     },
     {
         num: 6,
-        title: "이 제품이 얼마나 혁신적이라고 생각하시나요? (1 = 전혀 아니다, 7 = 매우 그렇다)"
+        title: "How innovative do you think this product is? (1 = Not Innovative at All, 7 = Very Innovative)"
     },
     {
         num: 7,
-        title: "향후 이 제품을 구매할 가능성은 얼마나 되나요? (1 = 전혀 가능성 없음, 7 = 매우 가능성 높음)"
+        title: "How likely are you to purchase this product in the future? (1 = Not Likely, 7 = Very Likely)"
     },
     {
         num: 8,
-        title: "웹사이트를 본 후 브랜드가 얼마나 마음에 드시나요? (1 = 전혀 선호하지 않음, 7 = 매우 선호함)"
+        title: "How much do you like the brand after viewing the website? (1 = Strongly Dislike, 7 = Strongly Like)"
     },
     {
         num: 9,
-        title: "기술 기반의 제품(예: 스마트 기기, 어플)을 얼마나 자주 사용하시나요? (1 = 전혀 사용하지 않음, 7 = 매우 자주 사용함)"
+        title: "How often do you use tech-based products (e.g., smart devices, apps)? (1 = Never, 7 = Very Often)"
     },
     {
         num: 10,
-        title: "웹사이트에서 본 물병과 비슷한 물병에 대해 얼마나 친숙하신가요? (1 = 전혀 친숙하지 않음, 7 = 매우 친숙함)"
+        title: "How familiar are you with water bottles similar to the one you viewed on the website? (1 = Not Familiar at All, 7 = Very Familiar)"
     },
     {
         num: 11,
-        title: "성별이 어떻게 되세요?"
+        title: "Gender:"
     },
 ];
